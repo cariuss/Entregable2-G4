@@ -1,7 +1,9 @@
 import pytest
-from django.utils import timezone
+
+# from django.utils import timezone
 
 from apps.recursos.models import Recurso
+
 
 @pytest.mark.django_db
 def test_crear_recurso():
@@ -22,6 +24,7 @@ def test_crear_recurso():
     assert recurso.fecha_creacion is not None
     assert recurso.fecha_actualizacion is not None
 
+
 @pytest.mark.django_db
 def test_str_method():
     recurso = Recurso.objects.create(
@@ -34,6 +37,7 @@ def test_str_method():
     )
     assert str(recurso) == "Laptop"
 
+
 @pytest.mark.django_db
 def test_blank_and_null_descripcion():
     recurso = Recurso.objects.create(
@@ -45,6 +49,7 @@ def test_blank_and_null_descripcion():
         cantidad_disponible=15,
     )
     assert recurso.descripcion is None
+
 
 @pytest.mark.django_db
 def test_fecha_actualizacion_changes_on_save():
@@ -61,4 +66,3 @@ def test_fecha_actualizacion_changes_on_save():
     recurso.save()
     recurso.refresh_from_db()
     assert recurso.fecha_actualizacion > old_fecha_actualizacion
-    

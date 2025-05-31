@@ -152,3 +152,18 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5174",  # Vite app
     "http://localhost:5173",
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://equipo4-gestor-de-recursos.vercel.app/",
+    "https://8e19-190-121-129-147.ngrok-free.app/",
+    "https://*.ngrok-free.app/",
+    "https://entregable3-chi.vercel.app/",
+]
+CORS_ALLOW_HEADERS = [
+    "authorization",
+    "content-type",
+    "x-csrftoken",
+]
+
+CORS_ALLOW_CREDENTIALS = True
+ALLOWED_HOSTS = ["*", ".vercel.app", ".ngrok-free.app"]

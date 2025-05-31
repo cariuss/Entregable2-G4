@@ -3,18 +3,19 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import ValidationError
 from apps.peticiones.models import SolicitudRecurso
 from apps.peticiones.serializer import PeticionSerializer
+from rest_framework.permissions import AllowAny
+
 
 class PeticionViewSet(viewsets.ModelViewSet):
     queryset = SolicitudRecurso.objects.all()
     serializer_class = PeticionSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
-   
     def perform_create(self, serializer):
         user = self.request.user
         print("Usuario actual:", user, user.is_authenticated, user.pk)
 
-        recurso = serializer.validated_data.get('recurso')
+        recurso = serializer.validated_data.get("recurso")
         print("Recurso recibido:", recurso)
 
         if recurso is None:
