@@ -11,7 +11,7 @@ const getTokenSafe = () => {
 };
 
 const api = axios.create({
-  baseURL: "https://8e19-190-121-129-147.ngrok-free.app/"
+  baseURL: "http://localhost:8000/"
 });
 
 api.interceptors.request.use(

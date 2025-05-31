@@ -26,11 +26,11 @@ SECRET_KEY = "django-insecure-mbl21v*$$nre#e6kg(6f*-74hc$pk@u#0u7q%&m)d5f2cepztc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".vercel.app", ".now.sh"]
+ALLOWED_HOSTS = [".vercel.app", ".now.sh", "localhost", "127.0.0.1"]
 
 # Application definition
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
+    # Use Django's standard ⁠ django.contrib.auth ⁠ permissions,
     # or allow read-only access for unauthenticated users.
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "apps.usuarios.authentication.CustomJWTAuthentication",
@@ -135,9 +135,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -145,12 +148,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOWED_ORIGINS = [
-    "https://equipo4-gestor-de-recursos-jzwor71kj.vercel.app/p",
-]
-ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["https://*.ngrok-free.app"]
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_HEADERS = [
-    "authorization",
-    "content-type",
+    "http://localhost:3000",  # React app
+    "http://localhost:5174",  # Vite app
+    "http://localhost:5173",
 ]
